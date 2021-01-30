@@ -4,13 +4,13 @@
 int main()
 {
 	char table[65] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-	char text[100000] = {0, };
-	char encoding[100000] = {0, };
+	char text[100000] = { 0, };
+	char encoding[400000] = { 0, };
 	int tLength = 0, tIndex = 0, eIndex = 0, step = 0;
 
 	printf_s("input text : ");
 	fgets(text, 100000, stdin);
-	text[strlen(text)-1]='\0';
+	text[strlen(text) - 1] = '\0';
 
 	tLength = strlen(text);
 
@@ -38,4 +38,5 @@ int main()
 		printf("%c", encoding[i]);
 	}
 	printf("\n");
+
 }
