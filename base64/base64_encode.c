@@ -25,11 +25,21 @@ int main()
 		// 8bit를 6bit로 짤라주는 과정
 		encoding[eIndex + 0] = table[(step >> 18) & 0x3F];
 		encoding[eIndex + 1] = table[(step >> 12) & 0x3F];
-		encoding[eIndex + 2] = ((step >> 6) & 0x3F) == 0 ? '=' : table[(step >> 6) & 0x3F];
-		encoding[eIndex + 3] = ((step >> 0) & 0x3F) == 0 ? '=' : table[(step >> 0) & 0x3F];
+		encoding[eIndex + 2] = table[(step >> 6) & 0x3F];
+		encoding[eIndex + 3] = table[(step >> 0) & 0x3F];
 
-		tIndex += 3;
 		eIndex += 4;
+		tIndex += 3;
+	}
+
+	if (tLength % 3 == 2 || tLength == 2)
+	{
+		encoding[eIndex - 1] = 0x3D;
+	}
+	else if (tLength % 3 == 1 || tLength == 1)
+	{
+		encoding[eIndex - 1] = 0x3D;
+		encoding[eIndex - 2] = 0x3D;
 	}
 
 	printf("\nEncoding Results: ");
@@ -39,4 +49,5 @@ int main()
 	}
 	printf("\n");
 
+	return 0;
 }
