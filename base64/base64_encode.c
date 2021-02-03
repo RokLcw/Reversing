@@ -47,7 +47,6 @@ int main()
 	{
 		printf("%c", encoding[i]);
 	}
-	printf("\n");
 
 	return 0;
 }
